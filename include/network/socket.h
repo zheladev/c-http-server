@@ -11,7 +11,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 
-int init_socket(struct addrinfo hints, char *port_str);
+int init_socket(struct addrinfo *addr_info, char *port_str);
 int bind_socket(int sockfd, struct addrinfo *addr_info);
 int listen_on_socket(int sockfd, int backlog);
 
