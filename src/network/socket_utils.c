@@ -1,6 +1,6 @@
 #include "network/socket_utils.h"
 
-int recv_msg(int fd, char **buffer) {
+int recv_entire_msg(int fd, char **buffer) {
     int size_recv, total_size = 0;
     int buffer_size = CHUNK_SIZE;
     char chunk[CHUNK_SIZE];

@@ -8,6 +8,6 @@
 #include <sys/socket.h>
 
 int send_msg(int sockfd, char *msg);
-int recv_msg(int fd, char **buffer);
+int recv_entire_msg(int fd, char **buffer);
 
 #endif

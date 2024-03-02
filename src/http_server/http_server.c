@@ -1,5 +1,6 @@
 #include "http_server/http_server.h"
-#include <stdio.h>
+#include "network/socket_utils.h"
+
 
 int initialize_server(char *port_str, int *sockfd, struct addrinfo *hints) {
     struct addrinfo *res;
@@ -47,6 +48,8 @@ void shutdown_server(int *sockfd) {
 }
 
 void handle_request(int client_socket) {
-    // handle HTTP requests from clients
-    // Parse incoming request, etc
+    char *outgoing_msg = "lol";
+    char *incoming_msg;
+    
+    int msg_size;
 }

@@ -8,6 +8,8 @@
 #include <string.h>
 #include <netdb.h>
 #include "constants.h"
+#include "network/socket_utils.h"
+#include <stdio.h>
 
 int initialize_server(char *port_str, int *sockfd, struct addrinfo *hints);
 void start_server(int *sockfd);
