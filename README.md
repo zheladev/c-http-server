@@ -2,15 +2,6 @@
 
 Simple (WIP) implementation of an HTTP server in the C programming language. Made for educational purposes to learn C and some network programming concepts.
 
-## Project Structure
-
-The project is organized into the following directories:
-
-- **src:** Contains the source code files for the HTTP server implementation.
-- **include:** Includes header files used in the project.
-- **lib:** Reserved for any external libraries (currently empty).
-- **build:** The directory where the compiled executable is generated.
-
 ## Building the Project
 
 To build the project, navigate to the project root directory and run the following command:
@@ -26,10 +17,10 @@ This will generate the executable in the build directory.
 After building the project, you can run the HTTP server using the following command:
 
 ```bash
-./build/http_server
+./build/http_server <port_num>
 ```
 
-By default, the server listens on port 8080. You can customize the port and other settings in the source code.
+By default, the server listens on port 8080. You can optionally pass a port number as an argument of `http_server` to bind it to a different port.
 
 ## TODO List
 
