@@ -17,11 +17,11 @@ int init_socket(struct addrinfo *addr_info, char *port_str) {
         return -1;
     }
 
-    // timeout
-    if (setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv,
-                   sizeof tv) == 1) {
-        return -1;
-    }
+    // // timeout
+    // if (setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv,
+    //                sizeof tv) == 1) {
+    //     return -1;
+    // }
 
     return sockfd;
 }

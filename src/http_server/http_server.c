@@ -1,4 +1,5 @@
 #include "http_server/http_server.h"
+#include "http_server/http_request.h"
 
 int initialize_server(char *port_str, int *sockfd, struct addrinfo *hints) {
     struct addrinfo *res;
@@ -33,31 +34,37 @@ void start_server(int *sockfd) {
         perror("listen on socket.");
         return;
     }
-
     addr_size = sizeof incoming_addr;
-    while ((incoming_sockfd = accept(*sockfd, (struct sockaddr *)&incoming_addr,
-                                     &addr_size)) != -1) {
+    while ((incoming_sockfd =
+                accept(*sockfd, (struct sockaddr *)&incoming_addr, &addr_size)) != -1) {
         handle_request(incoming_sockfd);
     }
 }
 
-void shutdown_server(int *sockfd) {
-    shutdown_socket(*sockfd, SHUT_RDWR);
-}
+void shutdown_server(int *sockfd) { shutdown_socket(*sockfd, SHUT_RDWR); }
 
 void handle_request(int client_socket) {
-    char *incoming_msg, *outgoing_msg = "lol";
+    HttpRequest *incoming_request;
+    char *outgoing_msg = "lol";
     int msg_size;
 
-    msg_size = recv_http_request(client_socket, &incoming_msg);
+    malloc_http_request(&incoming_request);
+    msg_size = recv_http_request(client_socket, incoming_request);
 
-    if (msg_size == -1) {
+    if (msg_size < 0) {
         perror("Error receiving message.");
         return;
     }
 
-    if (DEBUG)
-        printf("%s", incoming_msg);
+    if (DEBUG) {
+        printf("New request received.\n"
+               "Version int: %d\n"
+               "Method int: %d\n"
+               "Resource: %s\n"
+               "END\n",
+               incoming_request->http_version, incoming_request->http_method,
+               incoming_request->resource);
+    }
 
     // TODO: parse message, check which resource it's trying to acces, etc
 
