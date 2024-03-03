@@ -2,6 +2,8 @@
 #define HTTP_SERVER_H
 
 #include "constants.h"
+#include "http_server/http_request.h"
+#include "http_server/http_response.h"
 #include "network/socket_utils.h"
 #include <netdb.h>
 #include <stdio.h>

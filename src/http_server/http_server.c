@@ -42,7 +42,7 @@ void start_server(int *sockfd) {
 }
 
 void shutdown_server(int *sockfd) {
-    // server shutdown logic, close sockets, and release resources
+    shutdown_socket(*sockfd, SHUT_RDWR);
 }
 
 void handle_request(int client_socket) {
@@ -63,6 +63,6 @@ void handle_request(int client_socket) {
 
     // TODO: retrieve file, send response etc
 
-    send_msg(client_socket, outgoing_msg);
+    send_http_msg(client_socket, outgoing_msg);
     shutdown(client_socket, SHUT_RDWR);
 }
