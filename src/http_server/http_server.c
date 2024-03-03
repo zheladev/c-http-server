@@ -1,5 +1,4 @@
 #include "http_server/http_server.h"
-#include "http_server/http_request.h"
 
 int initialize_server(char *port_str, int *sockfd, struct addrinfo *hints) {
     struct addrinfo *res;

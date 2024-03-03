@@ -3,6 +3,7 @@
 
 #include "constants.h"
 #include <arpa/inet.h>
+#include <bits/types/struct_timeval.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <stdio.h>

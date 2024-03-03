@@ -1,6 +1,4 @@
 #include "network/socket_utils.h"
-#include <bits/types/struct_timeval.h>
-#include <sys/socket.h>
 
 int init_socket(struct addrinfo *addr_info, char *port_str) {
     int sockfd;
@@ -8,9 +6,9 @@ int init_socket(struct addrinfo *addr_info, char *port_str) {
     tv.tv_sec = 5;
     tv.tv_usec = 0;
 
-    sockfd = socket(addr_info->ai_family, addr_info->ai_socktype,
-                    addr_info->ai_protocol);
-    
+    sockfd =
+        socket(addr_info->ai_family, addr_info->ai_socktype, addr_info->ai_protocol);
+
     // reuseaddr
     int yes = 1;
     if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof yes) == 1) {

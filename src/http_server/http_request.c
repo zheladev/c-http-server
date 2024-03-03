@@ -1,8 +1,4 @@
 #include "http_server/http_request.h"
-#include "constants.h"
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
 
 void malloc_http_request(HttpRequest **request) {
     *request = malloc(sizeof(HttpRequest));
