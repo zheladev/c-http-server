@@ -175,12 +175,12 @@ int recv_http_request(int fd, HttpRequest *http_request_buffer) {
 
                     add_request_header(http_request_buffer, token);
 
-                    if (strcmp(
-                            http_request_buffer
-                                ->http_headers[http_request_buffer->num_http_headers -
-                                               1]
-                                ->name,
-                            "Content-Length") == 0) {
+                    char *header_name =
+                        http_request_buffer
+                            ->http_headers[http_request_buffer->num_http_headers - 1]
+                            ->name;
+
+                    if (strcmp(header_name, "Content-Length") == 0) {
                         body_length = atoi(
                             http_request_buffer
                                 ->http_headers[http_request_buffer->num_http_headers -
